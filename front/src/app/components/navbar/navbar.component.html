@@ -1,0 +1,23 @@
+<nav class="bg-[#121139] text-white flex items-center p-4 gap-10 justify-around">
+    <div class="bg-white flex justify-between items-center rounded-2xl">
+        <!--section logo-->
+       <a routerLink="/"><img class="cursor-pointer " src="/assets/images/Logo.svg" alt=""></a>
+       
+    </div>
+   <div>
+    <svg (click)="toggleMenu()" viewBox="0 0 24 24" class="h-8 w-8 stroke-slate-50 cursor-pointer md:hidden block">
+        <path *ngIf="!menuOpen" d="M3.75 12h16.5M3.75 6.75h16.5M3.75 17.25h16.5" fill="none" stroke-width="1.5" stroke-linecap="round"></path>
+        <path *ngIf="menuOpen" d="M6 6l12 12M18 6l-12 12" fill="none" stroke-width="1.5" stroke-linecap="round"></path>
+    </svg>
+   </div>
+    <!--section menu responsive-->
+    <ul [ngStyle]="myStyles" class="gap-6 absolute bg-blackout w-full left-0 py-4 pl-7 md:static md:flex md:items-center md:w-auto md:py-0 md:pl-0 md:opacity-100 z-10">
+        <li class="cursor-pointer p-4 hover:text-[#F44E77]" ><a routerLink="/">Inicio</a></li>
+        <li class="cursor-pointer p-4 hover:text-[#F44E77]"><a routerLink="/productos" routerLinkActive="active">Catálogo</a></li>
+        <li class="cursor-pointer p-4 hover:text-[#F44E77]"><a routerLink="/nosotros" routerLinkActive="active">Nosotros</a></li>
+        <li class="cursor-pointer p-4 hover:text-[#F44E77]"><a routerLink="/contacto" routerLinkActive="active">Contáctanos</a></li>
+        <a routerLink="/login" routerLinkActive="active" class="bg-white rounded-lg px-5 py-3 text-black cursor-pointer" alt="button-login">Iniciar Sesión</a>
+        <a routerLink="/register" routerLinkActive="active" class="bg-[#F44E77] rounded-lg px-5 py-3 text-white cursor-pointer" alt="button-register">Registrarse</a>
+    </ul>
+
+</nav>

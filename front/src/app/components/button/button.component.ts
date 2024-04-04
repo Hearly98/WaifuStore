@@ -8,5 +8,5 @@ import { Component, Input } from '@angular/core';
 })
 export class ButtonComponent {
 @Input() name: string='';
-@Input() colorClass: string='bg-slate-600';
+@Input() colorClass: string='bg-white text-black';
 }
