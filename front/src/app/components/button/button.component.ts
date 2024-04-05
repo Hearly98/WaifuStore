@@ -1,12 +1,14 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-button',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './button.component.html',
 })
 export class ButtonComponent {
 @Input() name: string='';
-@Input() colorClass: string='bg-slate-600';
+@Input() colorClass: string='bg-white text-black h-[53px]';
+@Input() additionalClass: string = 'w-full';
 }
