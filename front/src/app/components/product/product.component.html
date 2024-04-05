@@ -1,1 +1,11 @@
-<p>product works!</p>
+<article *ngFor="let product of products" class="w-[282px] h-auto rounded-3xl shadow-lg overflow-auto">
+        <div class="flex items-center bg-gray-200 justify-center h-[312px]">
+            <img [src]="product.image" [alt]="product.name">
+        </div>
+        <div class="p-4 text-sm text-[#61677A] grid gap-2">
+            <p>{{product.name}}</p>
+            <p>{{product.price}}</p>
+        <app-button name="Ver detalle" colorClass="bg-[#F44E77] h-9 p-1 text-xs rounded-lg"></app-button>
+        <app-button name="Agregar al carrito" colorClass="bg-[#7300D8] h-9 p-1 text-xs rounded-lg"></app-button>
+    </div>
+</article>
