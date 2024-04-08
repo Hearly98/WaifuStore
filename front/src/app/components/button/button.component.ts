@@ -9,6 +9,6 @@ import { Component, Input } from '@angular/core';
 })
 export class ButtonComponent {
 @Input() name: string='';
-@Input() colorClass: string='bg-white text-black h-[53px]';
-@Input() additionalClass: string = 'w-full';
+@Input() colorClass: string='bg-white h-[53px]';
+@Input() additionalClass: string = 'w-full rounded text-white';
 }
