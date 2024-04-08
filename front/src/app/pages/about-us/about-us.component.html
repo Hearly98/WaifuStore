@@ -1,0 +1,34 @@
+<section>
+  <app-banner />
+  <div
+    class="bg-lightBlue flex columns-3 justify-center items-center gap-40 px-28 py-20"
+  >
+    <button
+      (click)="openModal(about)"
+      *ngFor="let about of aboutInfo"
+      class="flex flex-col justify-center items-center bg-white rounded-[57px] w-[269px]"
+    >
+      <img
+        [src]="about.image"
+        class="w-[100px] h-[100px]"
+        [alt]="about.title"
+      />
+      <h2 class="font-bold text-xl">{{ about.title }}</h2>
+    </button>
+  </div>
+</section>
+
+<div *ngIf="isModalOpen" class="fixed top-1/4 right-1/4 h-40 w-[850px]">
+  <div *ngIf="selectAbout" class="bg-white rounded-3xl relative shadow">
+    <div class="flex justify-between p-5">
+      <p class="font-bold text-xl">{{ selectAbout.title }}</p>
+      <button (click)="closeModal()">
+        
+    <img src="/assets/images/close-icon.svg" alt=""></button>
+    </div>
+<hr>
+    <div class="p-12">
+      <p class="text-info text-justify">{{ selectAbout.content }}</p>
+    </div>
+  </div>
+</div>

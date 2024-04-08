@@ -1,0 +1,28 @@
+<section class="bg-lightBlue text-center p-20 flex flex-col gap-10">
+  <div class="flex flex-col text-blackout px-56 gap-4">
+    <h1 class="text-5xl font-bold">Estamos Aquí Para Ayudarte</h1>
+  </div>
+  <div class="flex justify-center items-center gap-12">
+    <article
+      class="border border-black rounded-[30px] bg-slate-50 py-24 px-16 w-[477px] h-[359px] flex flex-col gap-5"
+    >
+      <h2 class="font-bold text-xl">Equipo de Ventas</h2>
+      <p class="text-info text-justify">{{salesContent}}</p>
+      <a href="tel:{{ salesTeam }}" class="flex gap-2 justify-center items-center">
+        <img src="/assets/images/phone-icon.svg" alt="" />
+        <p class="text-info">{{ salesTeam }}</p>
+      </a>
+    </article>
+    <article
+      class="border border-black rounded-[30px] bg-slate-50 py-24 px-16 w-[477px] h-[359px] flex flex-col gap-5"
+    >
+      <h2 class="font-bold text-xl">Contacta con Soporte</h2>
+      <p class="text-justify text-info">{{supportContent}}</p>
+      <app-button
+        name="Chatear"
+        colorClass="bg-grape"
+        additionalClass="w-60 p-2.5 text-white rounded-lg"
+      />
+    </article>
+  </div>
+</section>
