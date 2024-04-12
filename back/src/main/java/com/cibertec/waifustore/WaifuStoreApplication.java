@@ -1,4 +1,4 @@
-package com.cibertec.waifustore.waifustore;
+package com.cibertec.waifustore;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

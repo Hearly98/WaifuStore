@@ -1,4 +1,4 @@
-package com.cibertec.waifustore.waifustore;
+package com.cibertec.waifustore;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
