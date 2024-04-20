@@ -39,7 +39,7 @@ public class Product {
     private Category category;
 
     @Column(name = "monto")
-    private Integer amount;
+    private Float amount;
 
     @ManyToOne
     @JoinColumn(name = "estado", referencedColumnName = "id")
