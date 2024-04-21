@@ -7,6 +7,7 @@ import { IndexComponent } from './pages/home/index/index.component';
 import { HomeComponent } from './pages/home/home.component';
 
 export const routes: Routes = [
+    {path:'', redirectTo:'/inicio', pathMatch:'full'},
     {
         path:'',
         component:HomeComponent,

@@ -1,7 +1,7 @@
 <section class="grid grid-flow-col gap-6 justify-center">
     <article *ngFor="let product of products" class="w-[282px] h-auto rounded-3xl shadow-lg overflow-hidden">
       <div class="flex items-center bg-gray-200 justify-center h-[312px]">
-        <img [src]="product.image" [alt]="product.name">
+        <img [src]="product.image" [alt]="product.name" loading="lazy">
       </div>
       <div class="flex flex-col justify-between p-4 text-sm bg-slate-50 text-[#61677A] gap-4">
         <div class="flex flex-col gap-2">

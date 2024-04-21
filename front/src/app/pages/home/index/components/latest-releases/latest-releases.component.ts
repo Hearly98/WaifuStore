@@ -12,10 +12,10 @@ import { ButtonComponent } from '../../../../../components/button/button.compone
 })
 export class LatestReleasesComponent {
   products =[
-    {image: "/assets/images/zelda.svg", name: "The Legend of Zelda Link Tears of the Kingdom ver. DX Edition", price: "S/150", description: ""},
-    {image:"/assets/images/hololive.svg", name: "Hololive Production Takanashi Kiara", price: "S/195", description: ""},
-    {image:"/assets/images/yuuka.svg", name: "Yuuka - Daily Life Of A Treasurer", price: "S/", description: ""},
-    {image:"/assets/images/plamax.png", name: "PLAMAX Urusei Yatsura Lum", price: "S/", description: ""}
+    {image: "https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/products/zelda.svg", name: "The Legend of Zelda Link Tears of the Kingdom ver. DX Edition", price: "S/150", description: ""},
+    {image:"https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/products/hololive.svg", name: "Hololive Production Takanashi Kiara", price: "S/195", description: ""},
+    {image:"https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/products/yuuka.svg", name: "Yuuka - Daily Life Of A Treasurer", price: "S/", description: ""},
+    {image:"https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/products/plamax.png", name: "PLAMAX Urusei Yatsura Lum", price: "S/", description: ""}
   ]
 
 
