@@ -3,7 +3,7 @@
         <h2 class="text-white text-[51px] font-bold">Categorías</h2>
         <section class="flex  justify-center gap-9 ">
                 <article *ngFor="let category of categories" class="w-[152px] bg-slate-50 rounded-2xl overflow-hidden">
-                    <img [src]="category.image" alt="" class="object-cover">
+                    <img [src]="category.image" alt="" class="object-cover" loading="lazy">
                     <p class="py-4 text-[#61677A]">{{category.name}}</p>
                 </article>
         </section>
