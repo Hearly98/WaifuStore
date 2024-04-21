@@ -18,4 +18,13 @@ public class Category {
 
     @Column(name = "nombre", length = 100)
     private String name;
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }
