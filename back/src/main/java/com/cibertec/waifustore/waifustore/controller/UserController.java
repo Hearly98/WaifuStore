@@ -14,11 +14,16 @@ import java.util.*;
 public class UserController {
     @Autowired
     private UserService userService;
-
     @GetMapping("all")
     public ResponseEntity<List<User>> getAllUsers(){
         List<User> users = userService.getAll();
         return  new ResponseEntity<>(users, HttpStatus.OK);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable("id") int id){
+        return userService.getUserById(id)
+                .map(user -> new ResponseEntity<>(user, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
     @PostMapping("/save")
     public ResponseEntity<User> saveUser(@RequestBody User user){
