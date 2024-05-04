@@ -1,0 +1,32 @@
+<section class="container px-14 py-6">
+    <h1 class="font-semibold text-4xl text-darkBlue">Marcas</h1>
+    <div class="flex justify-between py-6">
+        <input type="search" placeholder="buscar" class="border p-2">
+        <app-button colorClass="bg-gray-400 p-2" name="Crear Nuevo"></app-button>
+    </div>
+<div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+            <tr class="border-b">
+                <th scope="col" class="px-6 py-3">
+                    Nombre Categoría
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Acciones
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="border-b" *ngFor="let marca of marcas(); let i = index">
+                <th scope="row" class="col-span-4 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                    {{marca.name}}
+                </th>
+                <td scope="col" class="flex px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                    <a href=""><img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/edit.svg"/></a>
+                    <a href=""><img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/trash.svg"/></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</section>
