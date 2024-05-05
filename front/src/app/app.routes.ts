@@ -10,9 +10,6 @@ import { AdminComponent } from './admin/admin.component';
 import { BrandsComponent } from './admin/components/brands/brands.component';
 import { CategoriesComponent } from './admin/components/categories/categories.component';
 import { ProductsComponent } from './admin/components/products/products.component';
-import { CreateProductComponent } from './admin/components/products/create-product/create-product.component';
-import { EditProductComponent } from './admin/components/products/edit-product/edit-product.component';
-
 export const routes: Routes = [
     {path:'', redirectTo:'/inicio', pathMatch:'full'},
     {
@@ -60,14 +57,6 @@ export const routes: Routes = [
             {
                 path:'Productos',
                 component:ProductsComponent,
-            },
-            {
-                path:'CrearProducto',
-                component:CreateProductComponent
-            },
-            {
-                path:'EditarProducto',
-                component:EditProductComponent
             },
         ]
    }

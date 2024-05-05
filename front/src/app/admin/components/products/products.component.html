@@ -2,7 +2,7 @@
     <h1 class="font-semibold text-4xl text-darkBlue">Productos</h1>
     <div class="flex justify-between py-6">
         <input type="search" placeholder="buscar" class="border p-2">
-       <button routerLink="/createProduct" class="bg-gray-300 p-2 font-medium rounded-lg">Crear Nuevo</button>
+       <button (click)="openModal()" class="bg-gray-300 p-2 font-medium rounded-lg">Crear Nuevo</button>
     </div>
 <div class="relative overflow-x-auto">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500">
@@ -35,11 +35,84 @@
                 {{product.stock}}
                 </th>
                 <td scope="col" class="flex px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    <a routerLink='/CrearProducto'><img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/edit.svg"/></a>
-                    <a routerLink='/EditarProducto'><img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/trash.svg"/></a>
+                    <button (click)="openUpdateModal(product)"><img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/edit.svg"/></button>
+                    <button (click)="deleteProduct(product.id)"><img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/trash.svg"/></button>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
 </section>
+<div *ngIf="isOpenModal" class="fixed inset-0 flex justify-center items-center bg-gray-500 bg-opacity-50">
+    <div class="bg-white rounded-lg border w-1/2 p-6">
+        <button (click)="closeModal()" class="absolute top-3 right-3">
+            <img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/close-icon.svg" alt="close" loading="lazy">
+        </button>
+        <div class="flex flex-col gap-3">
+            <h2 class="font-semibold text-4xl text-darkBlue">Crear Producto</h2>
+            <p>Código del Producto</p>
+            <input type="text" class="border rounded-lg p-2" [(ngModel)]="newProductCode" placeholder="Código del Producto" required>
+
+            <p>Nombre del Producto</p>
+            <input type="text" class="border rounded-lg p-2" [(ngModel)]="newProductName" placeholder="Nombre del Producto" required>
+            <p>Marca del Producto</p>
+            <select [(ngModel)]="selectedBrand" class="border rounded-lg p-2">
+                <option *ngFor="let brand of brands()" [ngValue]="brand">{{ brand.name }}</option>
+            </select>
+            
+            <p>Categoría del Producto</p>
+            <select [(ngModel)]="selectedCategory" class="border rounded-lg p-2">
+                <option *ngFor="let category of categories()" [ngValue]="category">{{ category.name }}</option>
+            </select>
+            
+            <p>Descripción del Producto</p>
+            <textarea [(ngModel)]="newProductDescription" class="border rounded-lg p-2" rows="1"></textarea>
+            
+            <p>Stock</p>
+            <input type="number" class="border rounded-lg p-2" [(ngModel)]="newProductStock" required>
+        
+            <p>Precio</p>
+            <input type="number" class="border rounded-lg p-2" [(ngModel)]="newProductAmount" required>
+            <app-button (click)="addProduct()" colorClass="bg-darkBlue text-white p-2" name="Guardar Producto"></app-button>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isOpenUpdateModal" class="fixed inset-0 flex justify-center items-center bg-gray-500 bg-opacity-50">
+    <div class="bg-white rounded-lg border w-1/2 p-6">
+        <button (click)="closeUpdateModal()" class="absolute top-3 right-3">
+            <img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/close-icon.svg" alt="close" loading="lazy">
+        </button>
+        <div class="flex flex-col gap-3">
+            <h2 class="font-semibold text-4xl text-darkBlue">Actualizar Producto</h2>
+            
+            <p>Código del Producto</p>
+            <input type="text" class="border rounded-lg p-2" [(ngModel)]="updateProductCode" placeholder="Código del Producto" required>
+            
+            <p>Nombre del Producto</p>
+            <input type="text" class="border rounded-lg p-2" [(ngModel)]="updateProductName" placeholder="Nombre del Producto" required>
+            
+            <p>Marca del Producto</p>
+            <select [(ngModel)]="selectedBrand" name="selectedBrand" class="border rounded-lg p-2">
+                <option *ngFor="let brand of brands()"  selected [value]="brand">{{ brand.name }}</option>
+            </select>
+            
+            <p>Categoría del Producto</p>
+            <select [(ngModel)]="selectedCategory" name="selectedCategory"  class="border rounded-lg p-2">
+                <option *ngFor="let category of categories()" selected [value]="category">  
+                    {{ category.name }}
+                </option>
+            </select>
+            
+            <p>Descripción del Producto</p>
+            <textarea [(ngModel)]="updateProductDescription" class="border rounded-lg p-2" rows="1"></textarea>
+            
+            <p>Stock</p>
+            <input type="number" class="border rounded-lg p-2" [(ngModel)]="updateProductStock" required>
+            
+            <p>Precio</p>
+            <input type="number" class="border rounded-lg p-2" [(ngModel)]="updateProductAmount" required>
+            <app-button (click)="updateProduct()" colorClass="bg-darkBlue text-white p-2" name="Actualizar Producto"></app-button>
+        </div>
+    </div>
+</div>

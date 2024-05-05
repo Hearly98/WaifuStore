@@ -1,32 +1,59 @@
-<section class="container px-14 py-6">
+<section class="w-full px-14 py-6">
     <h1 class="font-semibold text-4xl text-darkBlue">Marcas</h1>
     <div class="flex justify-between py-6">
         <input type="search" placeholder="buscar" class="border p-2">
-        <app-button colorClass="bg-gray-400 p-2" name="Crear Nuevo"></app-button>
+        <app-button (click)="openModal()" colorClass="bg-gray-300 p-3" additionalClass="text-darkBlue font-bold text-sm rounded-lg" name="Crear Nuevo"></app-button>
     </div>
 <div class="relative overflow-x-auto">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+        <thead class="text-xs text-darkBlue uppercase bg-gray-50">
             <tr class="border-b">
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="w-3/4 px-6 py-3">
                     Nombre Categoría
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="w-3/4 px-6 py-3 text-center">
                     Acciones
                 </th>
             </tr>
         </thead>
         <tbody>
             <tr class="border-b" *ngFor="let marca of marcas(); let i = index">
-                <th scope="row" class="col-span-4 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                <th scope="row" class="col-span-4 px-6 py-4 font-normal text-gray-900 whitespace-nowrap">
                     {{marca.name}}
                 </th>
-                <td scope="col" class="flex px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    <a href=""><img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/edit.svg"/></a>
-                    <a href=""><img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/trash.svg"/></a>
+                <td scope="col" class="flex justify-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                    <button (click)="openUpdateModal(marca)"><img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/edit.svg"/></button>
+                    <button (click)="deleteBrand(marca.id)"><img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/trash.svg"/></button>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
 </section>
+<div *ngIf="isOpenModal" class="fixed inset-0 flex justify-center items-center bg-gray-500 bg-opacity-50">
+    <div class="bg-white rounded-lg border w-1/2 p-6">
+        <button (click)="closeModal()" class="absolute top-3 right-3">
+            <img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/close-icon.svg" alt="close" loading="lazy">
+        </button>
+        <div class="flex flex-col gap-3">
+            <h2 class="font-semibold text-4xl text-darkBlue">Crear Marca</h2>
+            <p>Nombre de la Marca</p>
+            <input type="text" class="border rounded-lg p-2" [(ngModel)]="newBrandName" id="name" required>
+            <app-button (click)="addBrand()" colorClass="bg-darkBlue text-white p-2" name="Guardar Marca"></app-button>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isOpenUpdateModal" class="fixed inset-0 flex justify-center items-center bg-gray-500 bg-opacity-50">
+    <div class="bg-white rounded-lg border w-1/2 p-6">
+        <button (click)="closeUpdateModal()" class="absolute top-3 right-3">
+            <img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/close-icon.svg" alt="close" loading="lazy">
+        </button>
+        <div class="flex flex-col gap-3">
+            <h2 class="font-semibold text-4xl text-darkBlue">Actualizar Marca</h2>
+            <p>Nombre de la Marca</p>
+            <input type="text" class="border rounded-lg p-2" [(ngModel)]="updateBrandName" id="name" required>
+            <app-button (click)="updateBrand()" colorClass="bg-darkBlue text-white p-2" name="Actualizar Marca"></app-button>
+        </div>
+    </div>
+</div>
