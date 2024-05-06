@@ -8,23 +8,23 @@ import { Observable } from 'rxjs';
 })
 export class ProductService {
   constructor(private http:HttpClient) { }
-  url='http://localhost:8080/api/'
-  getProducts(){
-    return this.http.get<Product[]>(`${this.url}products/all`)
+  url='http://localhost:8080/api/products'
+  getProducts():Observable<Product[]>{
+    return this.http.get<Product[]>(`${this.url}/all`)
   }
   getProductById(id: number): Observable<Product> {
     return this.http.get<Product>(`${this.url}/${id}`);
   }
 
-  createProduct(product: Product): Observable<Product> {
-    return this.http.post<Product>(`${this.url}/save`, product);
+  create(data: Product): Observable<Product[]> {
+    return this.http.post<Product[]>(`${this.url}/save`, data);
   }
 
-  updateProduct(product: Product): Observable<Product> {
-    return this.http.put<Product>(`${this.url}/update/${product.id}`, product);
+  update(data: any): Observable<any> {
+    return this.http.post<Product[]>(`${this.url}/save`, data);
   }
 
-  deleteProduct(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.url}/delete/${id}`);
+  delete(id: number): Observable<any> {
+    return this.http.delete<Product[]>(`${this.url}/delete/${id}`);
   }
 }
