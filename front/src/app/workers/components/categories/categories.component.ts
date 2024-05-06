@@ -37,7 +37,7 @@ export class CategoriesComponent implements OnInit{
   private categoryService=inject(CategoryService)
   errorMessage: string | null = null;
 
-  ngOnInit(){
+  ngOnInit(): void{
     this.fetchCategories();
   }
   fetchCategories(){
