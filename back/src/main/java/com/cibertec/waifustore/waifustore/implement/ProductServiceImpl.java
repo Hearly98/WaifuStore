@@ -1,6 +1,7 @@
 package com.cibertec.waifustore.waifustore.implement;
 
 import com.cibertec.waifustore.waifustore.model.Product;
+import com.cibertec.waifustore.waifustore.repository.ProductRepository;
 import com.cibertec.waifustore.waifustore.service.ProductService;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
@@ -15,6 +16,10 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private EntityManager entityManager;
+
+    @Autowired
+    private ProductRepository productRepository;
+
 
     @Override
     public List<Product> getAll() {
@@ -46,4 +51,8 @@ public class ProductServiceImpl implements ProductService {
             entityManager.remove(product);
         }
     }
+    public List<Product> findProductosDelMes() {
+        return productRepository.findProductosDelMes();
+    }
+
 }

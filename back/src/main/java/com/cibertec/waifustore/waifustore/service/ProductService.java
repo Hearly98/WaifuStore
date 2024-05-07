@@ -12,4 +12,6 @@ public interface ProductService {
     Optional<Product> getById(int id);
     Product save(Product product);
     void deleteById(int id);
+    List<Product> findProductosDelMes();
+
 }
