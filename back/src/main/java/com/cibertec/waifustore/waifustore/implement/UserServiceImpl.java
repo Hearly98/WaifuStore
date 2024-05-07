@@ -1,6 +1,7 @@
 package com.cibertec.waifustore.waifustore.implement;
 
 import com.cibertec.waifustore.waifustore.model.User;
+import com.cibertec.waifustore.waifustore.repository.UserRepository;
 import com.cibertec.waifustore.waifustore.service.UserService;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
@@ -14,6 +15,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private EntityManager entityManager;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public List<User> getAll(){
@@ -42,5 +46,8 @@ public class UserServiceImpl implements UserService {
             entityManager.remove(user);
         }
     }
-
+        @Override
+        public List<User> getUsersWithoutRolWorker(){
+            return userRepository.findUserWithoutRolWorker();
+        }
 }

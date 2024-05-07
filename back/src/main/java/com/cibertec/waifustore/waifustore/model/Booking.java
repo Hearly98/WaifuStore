@@ -9,7 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 @Entity
-@Table(name = "reserva")
+@Table(name = "reservas")
 @Data
 @Getter
 @Setter

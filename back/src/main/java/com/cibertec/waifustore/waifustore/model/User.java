@@ -27,9 +27,11 @@ public class User {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date birthdate;
+    @Column(name = "document")
+    private String document;
     @ManyToOne
     @JoinColumn(name= "id_documento", referencedColumnName = "id")
-    private Document document;
+    private Document documentType;
     public Integer getId() {
         return id;
     }

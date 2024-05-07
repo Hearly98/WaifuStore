@@ -35,5 +35,10 @@ public class UserController {
         userService.deleteUserById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    @GetMapping("/withoutRolWorker")
+    public ResponseEntity<List<User>>getUsersWithoutRolWorker(){
+        List<User> users= userService.getUsersWithoutRolWorker();
+        return ResponseEntity.ok(users);
+    }
 }
 
