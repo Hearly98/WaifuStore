@@ -4,7 +4,7 @@ export interface User {
     name: string,
     email: string,
     password: string,
-    birdthdate: string,
-    document: Document,
-
+    birthdate: string,
+    documentType: Document,
+    document: string,
 }

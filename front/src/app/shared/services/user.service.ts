@@ -7,7 +7,7 @@ import { User } from '../../../models/user';
   providedIn: 'root'
 })
 export class UserService {
-  url = 'http://localhost:8080/users' 
+  url = 'http://localhost:8080/api/users' 
   constructor(private http: HttpClient) { }
 
   getAll():Observable<User[]>{
@@ -21,5 +21,8 @@ export class UserService {
   }
   update(data:any):Observable<any>{
     return this.http.post<User[]>(`${this.url}/save`, data)
+  }
+  getUserWithoutRolWorker(): Observable<User[]>{
+    return this.http.get<User[]>(`${this.url}/withoutRolWorker`)
   }
 }

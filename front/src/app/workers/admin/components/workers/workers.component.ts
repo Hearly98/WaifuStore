@@ -6,6 +6,8 @@ import { Worker } from '../../../../../models/worker';
 import { Roles } from '../../../../../models/roles';
 import { User } from '../../../../../models/user';
 import { ButtonComponent } from '../../../../components/button/button.component';
+import { UserService } from '../../../../shared/services/user.service';
+import { RolService } from '../../../../shared/services/rol.service';
 @Component({
   selector: 'app-workers',
   standalone: true,
@@ -15,6 +17,7 @@ import { ButtonComponent } from '../../../../components/button/button.component'
 export class WorkersComponent implements OnInit{
   titles=[
     {name: 'Nombre Trabajador'},
+    {name: 'Email'},
     {name:'Rol'},
   ]
   workers = signal<Worker[]>([]);
@@ -22,16 +25,19 @@ export class WorkersComponent implements OnInit{
   roles = signal<Roles[]>([])
   selectedUser!: User;
   newEmailWorker: string= '';
-  updateNameWorker = '';
-  updateEmailWorker = '';
+  selectedWorker !: Worker;
   selectedRol !: Roles; 
   isOpenModal = false;
   isOpenUpdateModal = false;
   errorMessage = ''
   submitted = false
   private workerService= inject(WorkerService)
+  private userService = inject(UserService)
+  private rolService = inject(RolService)
   ngOnInit(): void {
-    this.getWorkers()
+    this.getWorkers();
+    this.loadUsers();
+    this.loadRoles();
   }
   openModal(){
     this.isOpenModal=true
@@ -39,7 +45,9 @@ export class WorkersComponent implements OnInit{
   closeModal(){
     this.isOpenModal= !this.isOpenModal
   }
-  openUpdateModal(){
+  openUpdateModal(worker : Worker){
+    this.selectedWorker = worker;
+    this.selectedRol = worker.rol
     this.isOpenUpdateModal=true
   }
   closeUpdateModal(){
@@ -57,6 +65,29 @@ export class WorkersComponent implements OnInit{
     })
     
   }
+  loadRoles(){
+    this.rolService.getAll()
+    .subscribe({
+      next:(roles)=>{
+        this.roles.set(roles)
+      },
+      error:(err)=>{
+        this.errorMessage = "No se puede cargar los roles en estos momentos. Intentelo más tarde"
+      }
+    })
+  }
+  loadUsers(){
+    this.userService.getUserWithoutRolWorker()
+    .subscribe({
+      next:(users)=>{
+       this.users.set(users)
+      },
+      error:(err)=>{
+        this.errorMessage = "No se puede cargar los usuarios en estos momentos. Intentelo más tarde"
+      }
+    })
+    
+  }
   createWorkers(): void{
     const data = {
       id: 0,
@@ -64,6 +95,22 @@ export class WorkersComponent implements OnInit{
       rol: this.selectedRol
     };
     this.workerService.create(data)
+    .subscribe(
+      response =>{
+        this.submitted = true;
+        this.getWorkers();
+        this.closeModal;
+      },
+      error =>{
+        this.errorMessage = "Error al registrar un Trabajador."
+      },
+    )
+  }
+  updateWorkers():void{
+    const data = {
+      rol: this.selectedRol
+    }
+    this.workerService.update(data)
     .subscribe(
       response =>{
         this.submitted = true;
