@@ -1,27 +1,31 @@
 package com.cibertec.waifustore.waifustore.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "usuario" )
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Getter
 @Setter
-public class User {
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "nombre", length = 200)
     private String name;
-    @Column(name = "email", length = 100, nullable = false)
-    private String email;
-    @Column(name= "password_hash", length = 50, nullable = false)
+    @Column(name = "username", length = 100, nullable = false)
+    private String username;
+    @Column(name= "password", length = 50, nullable = false)
     private String password;
     @Column(name = "fecha_nac")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -30,7 +34,34 @@ public class User {
     @ManyToOne
     @JoinColumn(name= "id_documento", referencedColumnName = "id")
     private Document document;
+
+
     public Integer getId() {
         return id;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }
