@@ -1,0 +1,6 @@
+<section class="w-full flex bg-darkBlue flex-col items-center justify-center gap-4">
+  <h2 class="text-white text-6xl">Productos</h2>
+  <div class="container px-2 py-6 mb-3 grid grid-cols-4 gap-3">
+      <app-product *ngFor="let product of products()" [product]="product"></app-product>
+  </div>
+</section>

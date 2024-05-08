@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
+import { Product } from '../../../models/product';
 
 @Component({
   selector: 'app-product',
@@ -9,6 +10,6 @@ import { ButtonComponent } from '../button/button.component';
   templateUrl: './product.component.html',
 })
 export class ProductComponent {
-  @Input() products?: any[];
+  @Input() product!: Product
 
 }
