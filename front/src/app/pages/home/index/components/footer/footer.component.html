@@ -1,10 +1,39 @@
-<footer class=" p-16 bg-[#121139] w-full text-white text-sm">
-  <div class="container flex justify-between">
-    <div>
-        <img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/Logo_completo.svg" alt="" loading="lazy">
+<footer class="p-16 bg-[#121139] w-full text-white text-sm">
+    <div class="container flex justify-between">
+      <div>
+        <img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/Logo_completo.svg" alt=""
+          loading="lazy">
+      </div>
+      <div class="col-span-1 ml-6">
+        <h3 class="underline text-lg mb-4">{{ empresaTitle }}</h3>
+        <p class="mb-4">
+        <a href="/nosotros">{{ empresaContent }}
+        </a>
+        </p>
+        <p>{{ terminos }}</p>
+      </div>
+      <div class="col-span-1 ml-6">
+        <h3 class="underline text-lg ml-4">{{ contactoTitle }}</h3>
+        <p class="mb-4 mt-4"><img [src]="whatsappSrc" alt="{{ whatsappAlt }}" width="40" height="40" style="margin-left:40px;"></p>
+      </div>
+      <div class="col-span-1 ml-6">
+        <h3 class="underline text-lg ml-4">{{ seguirTitle }}</h3>
+        <p class="mb-4 mt-4">
+            <a href="https://www.facebook.com/waifustore1/?locale=es_LA" target="_blank">
+             <img [src]="facebookSrc" alt="{{ facebookAlt }}" width="40" height="40" style="margin-left:35px;">
+            </a>
+            </p>
+      </div>
+      <div class="col-span-1 ml-10">
+        <h3 class="underline text-lg ml-8" style="margin-right:-10px;">{{ pagoTitle }}</h3>
+        <p class="text-center mb-4 mt-4">
+          <img [src]="visaSrc" alt="{{ visaAlt }}" width="50" height="50" class="inline-block mr-2 ml-2" style="margin-right: 30px;">
+          <img [src]="yapeSrc" alt="{{ yapeAlt }}" width="40" height="40" class="inline-block mr-8" style="margin-right:30px;">
+          <img [src]="plinSrc" alt="{{ plinAlt }}" width="40" height="40" class="inline-block" style="margin-right:50px;">
+        </p>
+      </div>
     </div>
-    <div class="grid grid-cols-3 gap-2 ">
-    
-    </div>     
-  </div>
-</footer>
+    <hr class="my-8 ml-2 border-t border-gray-100">
+    <p class="text-sm text-center -mt-3">{{ derechos }}</p>
+  </footer>
+  

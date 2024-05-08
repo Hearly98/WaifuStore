@@ -1,0 +1,29 @@
+<div class='flex text-custom-menu-text'>
+  <div class='flex justify-end'>
+    <img
+      src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/Hamburger.svg"
+      class="absolute cursor-pointer top-2 w-12 h-11 border-purple z-10 rounded-md duration-500"
+      (click)="toggleSidebar()"
+    />
+    <div [ngClass]="{'w-56': open, 'w-12': !open}" class="flex align-center duration-500 h-screen pt-8 bg-purple relative">
+      <ul class='pt-6 pb-6 flex flex-col overflow-x-hidden' [class.w-full]="open">
+        <ng-container *ngFor="let menu of menues">
+          <li [routerLink]="menu.path" class='text-sm flex flex-col cursor-pointer p-3 rounded-md'>
+            <a (click)="toggleSubmenu(menu)" class="flex items-center gap-x-2">
+              <img [src]="menu.img" class=""/>
+              <span [class.hidden]="!open" class="duration-300 tracking-wide text-base font-medium">{{ menu.text }}</span>
+            </a>
+           <!--Si en caso hay submodulos los mostrará-->
+            <ul *ngIf="menu.submenu && menu.open" class='pt-2'>
+              <ng-container *ngFor="let sub of menu.submenu">
+                <li class="pl-4 text-xs flex items-center gap-x-2 cursor-pointer">
+                  <a [routerLink]="sub.path" [class.hidden]="!open" class="duration-300 tracking-wide p-3 font-medium text-sm">{{ sub.text }}</a>
+                </li>
+              </ng-container>
+            </ul>
+          </li>
+        </ng-container>
+      </ul>
+    </div>       
+  </div>
+</div>
