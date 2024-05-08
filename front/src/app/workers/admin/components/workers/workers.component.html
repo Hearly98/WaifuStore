@@ -1,0 +1,96 @@
+<section class="container px-14 py-6">
+    <h1 class="font-semibold text-4xl text-darkBlue">Trabajadores</h1>
+    <div class="flex justify-between py-6">
+        <input type="search" placeholder="buscar" class="border p-2">
+       <button (click)="openModal()" class="bg-gray-300 p-2 font-medium rounded-lg">Crear Nuevo</button>
+    </div>
+<div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+            <tr>
+                <th scope="col" class="px-6 py-3" *ngFor="let title of titles">
+                    {{ title.name }}
+                </th>
+                <th scope="col" class="px-6 py-3">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="border-b" *ngFor="let worker of workers()">
+                <th scope="row" class="col-span-4 px-6 py-4 font-light text-gray-900 whitespace-nowrap">
+                    {{worker.id_user.name}}
+                </th>
+                <td scope="row" class="px-6 py-4 font-light text-gray-900 whitespace-nowrap">
+                    {{worker.id_user.email}}
+                </td>
+                <td scope="row" class="px-6 py-4 font-light text-gray-900 whitespace-nowrap">
+                    {{worker.rol.name}}
+                </td>
+                <td scope="col" class="flex px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                    <button><img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/edit.svg"/></button>
+                    <button><img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/trash.svg"/></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</section>
+
+<div *ngIf="isOpenModal" class="fixed inset-0 flex justify-center items-center bg-gray-500 bg-opacity-50">
+    <div class="bg-white rounded-lg border w-1/2 p-6">
+        <button (click)="closeModal()" class="absolute top-3 right-3">
+            <img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/close-icon.svg" alt="close" loading="lazy">
+        </button>
+        <div class="flex flex-col gap-3">
+            <h2 class="font-semibold text-4xl text-darkBlue">Crear Trabajador</h2>
+            <p>Usuario</p>
+            <select [(ngModel)]="selectedUser" class="border rounded-lg p-2">
+                <option *ngFor="let user of users()" [ngValue]="user">{{ user.name }}</option>
+            </select>
+            <p>Rol</p>
+            <select [(ngModel)]="selectedRol" class="border rounded-lg p-2">
+                <option *ngFor="let rol of roles()" [ngValue]="rol">{{ rol.name }}</option>
+            </select>
+            
+            <app-button (click)="createWorkers()" colorClass="bg-darkBlue text-white p-2" name="Guardar Trabajador"></app-button>
+        </div>
+    </div>
+</div>
+<!--
+<div *ngIf="isOpenUpdateModal" class="fixed inset-0 flex justify-center items-center bg-gray-500 bg-opacity-50">
+    <div class="bg-white rounded-lg border w-1/2 p-6">
+        <button (click)="closeUpdateModal()" class="absolute top-3 right-3">
+            <img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/close-icon.svg" alt="close" loading="lazy">
+        </button>
+        <div class="flex flex-col gap-3">
+            <h2 class="font-semibold text-4xl text-darkBlue">Actualizar Producto</h2>
+            
+            <p>Código del Producto</p>
+            <input type="text" class="border rounded-lg p-2" [(ngModel)]="updateProductCode" placeholder="Código del Producto" required>
+            
+            <p>Nombre del Producto</p>
+            <input type="text" class="border rounded-lg p-2" [(ngModel)]="updateProductName" placeholder="Nombre del Producto" required>
+            
+            <p>Marca del Producto</p>
+            <select [(ngModel)]="selectedBrand" name="selectedBrand" class="border rounded-lg p-2">
+                <option *ngFor="let brand of brands()"  selected [value]="brand">{{ brand.name }}</option>
+            </select>
+            
+            <p>Categoría del Producto</p>
+            <select [(ngModel)]="selectedCategory" name="selectedCategory"  class="border rounded-lg p-2">
+                <option *ngFor="let category of categories()" selected [value]="category">  
+                    {{ category.name }}
+                </option>
+            </select>
+            
+            <p>Descripción del Producto</p>
+            <textarea [(ngModel)]="updateProductDescription" class="border rounded-lg p-2" rows="1"></textarea>
+            
+            <p>Stock</p>
+            <input type="number" class="border rounded-lg p-2" [(ngModel)]="updateProductStock" required>
+            
+            <p>Precio</p>
+            <input type="number" class="border rounded-lg p-2" [(ngModel)]="updateProductAmount" required>
+            <app-button (click)="updateProduct()" colorClass="bg-darkBlue text-white p-2" name="Actualizar Producto"></app-button>
+        </div>
+    </div>
+</div>-->
