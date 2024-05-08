@@ -4,10 +4,14 @@
         <img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/login-icon.svg" alt="">
         <h1 class="text-white text-bold text-3xl">Empecemos</h1>
     </div>
-    <form action="" class="flex flex-col gap-4">
-        <input class="p-4 h-[53px] rounded" type="email" id="input-email" placeholder="Ingrese su correo electronico">
-        <input class="p-4 h-[53px] rounded" type="password" id="input-password" placeholder="Ingrese su contraseña">
-        <app-button routerLink="/administrador" name="Iniciar Sesión" colorClass="bg-magenta p-4"></app-button>
+    <form (submit)="doLogin()"  class="flex flex-col gap-4">
+        <input [(ngModel)]="loginData.username" name="username" class="p-4 h-[53px] rounded" type="email" id="input-username" placeholder="Ingrese su correo electronico">
+        <input [(ngModel)]="loginData.password" name="password" class="p-4 h-[53px] rounded" type="password" id="input-password" placeholder="Ingrese su contraseña">
+        <app-button type="submit" name="Iniciar Sesión" colorClass="bg-magenta p-4"></app-button>
     </form>
 </div>
 </section>
+
+<div *ngIf="message" class=" p-4 mb-4 text-sm w-full bg-green-400 rounded-lg duration-300" role="alert">
+    <span class="font-medium">{{message}}</span>
+</div>
