@@ -64,4 +64,27 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    @OneToOne(mappedBy = "user")
+    private Client client;
+
+    @OneToOne(mappedBy = "user")
+    private Worker worker;
+
+    public Client getClient() {
+        return this.client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Worker getWorker() {
+        return this.worker;
+    }
+
+    public void setWorker(Worker worker) {
+        this.worker = worker;
+    }
+
 }

@@ -18,7 +18,7 @@ public class Worker {
 
     @ManyToOne
     @JoinColumn(name = "id_user", referencedColumnName = "id")
-    private User id_user;
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "id_rol", referencedColumnName = "id")

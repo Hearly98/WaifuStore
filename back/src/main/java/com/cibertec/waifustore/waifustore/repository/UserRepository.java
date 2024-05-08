@@ -11,6 +11,9 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("SELECT u FROM User u WHERE NOT EXISTS (SELECT w FROM Worker w WHERE w.id_user.id = u.id)")
     List<User> findUserWithoutRolWorker();
-    Optional<User> findByUsername(String username);
 
+    @Query("SELECT u FROM User u LEFT JOIN FETCH u.client c LEFT JOIN FETCH c.roles r LEFT JOIN FETCH u.worker w LEFT JOIN FETCH w.rol WHERE u.username = :username")
+    Optional<User> findByUsernameWithRoles(String username);
+
+    Optional<User> findByUsername(String username);
 }
