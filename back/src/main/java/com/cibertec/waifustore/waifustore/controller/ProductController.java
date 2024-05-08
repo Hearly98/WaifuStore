@@ -16,6 +16,8 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+
+
     @GetMapping("/all")
     public ResponseEntity<List<Product>> getAllProducts() {
         List<Product> products = productService.getAll();
@@ -39,5 +41,10 @@ public class ProductController {
     public ResponseEntity<Void> deleteProduct(@PathVariable("id") int id) {
         productService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+    @GetMapping("/mes-actual")
+    public ResponseEntity<List<Product>> getProductsFromCurrentMonth() {
+        List<Product> productosDelMes = productService.findProductosDelMes();
+        return new ResponseEntity<>(productosDelMes, HttpStatus.OK);
     }
 }
