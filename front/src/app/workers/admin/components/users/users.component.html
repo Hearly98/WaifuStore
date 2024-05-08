@@ -20,7 +20,7 @@
                     {{user.name}}
                 </th>
                 <td scope="row" class="px-6 py-4 font-light text-gray-900 whitespace-nowrap">
-                    {{user.email}}
+                    {{user.username}}
                 </td>
                 <td scope="row" class="px-6 py-4 font-light text-gray-900 whitespace-nowrap">
                     {{user.documentType.name}}
@@ -48,15 +48,15 @@
             <p>Nombre del Usuario</p>
             <input type="text" class="border rounded-lg p-2" [(ngModel)]="newNameUser" required>
             <p>Email</p>
-            <input type="text" class="border rounded-lg p-2" [(ngModel)]="newEmailUser" required>
+            <input type="text" class="border rounded-lg p-2" [(ngModel)]="newUsernameUser" required>
             <p>Contraseña</p>
             <input type="password" class="border rounded-lg p-2" [(ngModel)]="newPasswordUser" required>
             <p>Fecha de Nacimiento</p>
             <input type="date" class="border rounded-lg p-2" [(ngModel)]="newBirthdateUser" required>
             <p>Tipo Documento</p>
             <select [(ngModel)]="selectedDocumentType" name="selectedDocumentType" class="border rounded-lg p-2">
-                <option class="py-4" *ngFor="let document of documents()" [ngValue]="document">{{ document.name }}</option>
-            </select>
+                <option *ngFor="let document of documents()" [ngValue]="document">{{ document.name }}</option>
+              </select>
             <p>Documento</p>
             <input type="text" class="border rounded-lg p-2" [(ngModel)]="newDocumentUser" required>
 
@@ -75,15 +75,15 @@
             <p>Nombre del Usuario</p>
             <input type="text" class="border rounded-lg p-2" id="updateNameUser" name="updateNameUser" [(ngModel)]="updateNameUser" required>
             <p>Email</p>
-            <input type="text" class="border rounded-lg p-2" id="updateEmailUser" name="updateEmailUser" [(ngModel)]="updateEmailUser" required>
+            <input type="text" class="border rounded-lg p-2" id="updateUsernameUser" name="updateUsernameUser" [(ngModel)]="updateUsernameUser" required>
             <p>Contraseña</p>
             <input type="password" class="border rounded-lg p-2" id="updatePasswordUser" name="updatePasswordUser" [(ngModel)]="updatePasswordUser" required>
             <p>Fecha de Nacimiento</p>
             <input type="date" class="border rounded-lg p-2" id="updateBirthdateUser" name="updateBirthdateUser" [(ngModel)]="updateBirthdateUser" required>
             <p>Tipo Documento</p>
-            <select [(ngModel)]="selectedDocumentType" id="selectedDocumentType" class="border rounded-lg p-2">
-                <option class="py-4" *ngFor="let document of documents()" [value]="document">{{ document.name }}</option>
-            </select>
+            <select [(ngModel)]="selectedDocumentType" name="selectedDocumentType" class="border rounded-lg p-2">
+                <option *ngFor="let document of documents()" [value]="document.id">{{ document.name }}</option>
+              </select>
             <app-button (click)="updateUser()" colorClass="bg-darkBlue text-white p-2" name="Actualizar Usuario"></app-button>
         </div>
     </div>

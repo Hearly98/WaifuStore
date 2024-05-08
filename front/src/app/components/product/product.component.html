@@ -5,12 +5,36 @@
     </div>
     <div class="flex flex-col justify-between p-4 text-sm bg-slate-50 text-[#61677A] gap-4">
       <div class="flex flex-col gap-2">
-        <p class="h-[3em] overflow-hidden">{{product.name}}</p>
+        <p class="overflow-hidden">{{product.name}}</p>
+        <p class="overflow-hidden"><span class="font-medium">Marca:</span> {{product.brand.name}}</p>
+        <p class="overflow-hidden"><span class="font-medium">Categoría:</span> {{product.category.name}}</p>
         <p>S/. {{product.amount}}</p>
       </div>
       <div class="flex flex-col gap-2">
-        <app-button name="Ver detalle" colorClass="bg-[#F44E77] h-9 p-0 text-xs rounded-lg"></app-button>
+        <app-button (click)="openModal(product)" name="Ver detalle" colorClass="bg-[#F44E77] h-9 p-0 text-xs rounded-lg"></app-button>
         <a href="https://wa.me/921323007?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20producto%3A%20{{product.name}}" class="bg-[#7300D8] h-9 text-xs text-center p-2 w-full rounded text-white">Contactar por Whatsapp</a>
       </div>
     </div>
   </article>
+  <div *ngIf="isOpenModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+    <div class="bg-white rounded-3xl shadow-lg p-5 w-[850px] relative">
+      <button (click)="closeModal()" class="absolute top-3 right-3">
+        <img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/close-icon.svg" alt="Cerrar" class="h-6 w-6">
+      </button>
+      <div class="max-w-4xl mx-auto grid sm:grid-cols-1 lg:grid-cols-2 gap-x-20">
+        <div class="flex flex-col justify-between py-3 lg:order-1">
+          <h2 class="font-semibold text-2xl text-slate-900">{{ selectedProduct?.name }}</h2>
+          <p class="text-sm font-medium text-slate-500">Categoría: {{ selectedProduct?.code }}</p>
+          <p class="text-sm font-medium text-slate-500">Marca: {{ selectedProduct?.brand?.name }}</p>
+          <p class="text-sm font-medium text-slate-500">Marca: {{ selectedProduct?.category?.name }}</p>
+          <p class="text-sm font-medium text-slate-500">Marca: {{ selectedProduct?.amount }}</p>
+          <p class=" text-sm text-slate-400">Descripción: <br>
+            {{ selectedProduct?.description }}</p>
+        </div>
+        <div class="flex justify-center lg:order-2">
+          <img [src]="'/assets/'+selectedProduct?.image" alt="" class="h-60 w-auto object-cover rounded-lg">
+        </div>
+      </div>
+    </div>
+  </div>
+  

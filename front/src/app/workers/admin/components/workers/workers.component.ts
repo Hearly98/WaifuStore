@@ -31,6 +31,7 @@ export class WorkersComponent implements OnInit{
   isOpenUpdateModal = false;
   errorMessage = ''
   submitted = false
+  currentId!: number;
   private workerService= inject(WorkerService)
   private userService = inject(UserService)
   private rolService = inject(RolService)
@@ -46,6 +47,7 @@ export class WorkersComponent implements OnInit{
     this.isOpenModal= !this.isOpenModal
   }
   openUpdateModal(worker : Worker){
+    this.currentId = worker.id;
     this.selectedWorker = worker;
     this.selectedRol = worker.rol
     this.isOpenUpdateModal=true
@@ -99,7 +101,7 @@ export class WorkersComponent implements OnInit{
       response =>{
         this.submitted = true;
         this.getWorkers();
-        this.closeModal;
+        this.closeModal();
       },
       error =>{
         this.errorMessage = "Error al registrar un Trabajador."
@@ -108,6 +110,8 @@ export class WorkersComponent implements OnInit{
   }
   updateWorkers():void{
     const data = {
+      id: this.currentId,
+      id_user: this.selectedWorker.id_user,
       rol: this.selectedRol
     }
     this.workerService.update(data)
@@ -115,7 +119,7 @@ export class WorkersComponent implements OnInit{
       response =>{
         this.submitted = true;
         this.getWorkers();
-        this.closeModal;
+        this.closeUpdateModal();
       },
       error =>{
         this.errorMessage = "Error al registrar un Trabajador."

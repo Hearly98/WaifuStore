@@ -59,7 +59,6 @@
             <select [(ngModel)]="selectedBrand" class="border rounded-lg p-2">
                 <option *ngFor="let brand of brands()" [ngValue]="brand">{{ brand.name }}</option>
             </select>
-            
             <p>Categoría del Producto</p>
             <select [(ngModel)]="selectedCategory" class="border rounded-lg p-2">
                 <option *ngFor="let category of categories()" [ngValue]="category">{{ category.name }}</option>
@@ -93,13 +92,13 @@
             <input type="text" class="border rounded-lg p-2" [(ngModel)]="updateProductName" placeholder="Nombre del Producto" required>
             
             <p>Marca del Producto</p>
-            <select [(ngModel)]="selectedBrand" name="selectedBrand" class="border rounded-lg p-2">
-                <option *ngFor="let brand of brands()"  selected [value]="brand">{{ brand.name }}</option>
+            <select [(ngModel)]="selectedBrand" name="selectedBrand" id="selectedBrand" class="border rounded-lg p-2">
+                <option *ngFor="let brand of brands()" [ngValue]="brand">{{ brand.name }}</option>
             </select>
             
             <p>Categoría del Producto</p>
-            <select [(ngModel)]="selectedCategory" name="selectedCategory"  class="border rounded-lg p-2">
-                <option *ngFor="let category of categories()" selected [value]="category">  
+            <select [(ngModel)]="selectedCategory" name="selectedCategory" id="selectedCategory" class="border rounded-lg p-2">
+                <option *ngFor="let category of categories()" [ngValue]="category">  
                     {{ category.name }}
                 </option>
             </select>

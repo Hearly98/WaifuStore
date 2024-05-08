@@ -21,13 +21,13 @@ export class UsersComponent implements OnInit{
   isOpenModal = false;
   isOpenUpdateModal = false;
   newNameUser: string = '';
-  newEmailUser: string = '';
+  newUsernameUser: string = '';
   newPasswordUser: string = '';
   newBirthdateUser: string = '';
   selectedDocumentType !: Document;
   newDocumentUser: string = '';
   updateNameUser = '';
-  updateEmailUser = '';
+  updateUsernameUser = '';
   updatePasswordUser = '';
   updateBirthdateUser = '';
   updateDocumentUser = '';
@@ -49,7 +49,7 @@ export class UsersComponent implements OnInit{
     this.currentUserId = user.id
     this.isOpenUpdateModal = true
     this.updateNameUser = user.name;
-    this.updateEmailUser = user.email;
+    this.updateUsernameUser = user.username;
     this.updateDocumentUser = user.document;
     this.updatePasswordUser = user.password;
     this.updateBirthdateUser = user.birthdate;
@@ -91,7 +91,7 @@ export class UsersComponent implements OnInit{
     const data = {
       id: 0,
       name: this.newNameUser,
-      email: this.newEmailUser,
+      username: this.newUsernameUser,
       password: this.newPasswordUser,
       birthdate: this.newBirthdateUser,
       documentType: this.selectedDocumentType,
@@ -113,7 +113,7 @@ export class UsersComponent implements OnInit{
     const data ={
       id: this.currentUserId,
       name: this.updateNameUser,
-      email: this.updateEmailUser,
+      username: this.updateUsernameUser,
       password: this.updatePasswordUser,
       birthdate: this.updateBirthdateUser,
       documentType: this.selectedDocumentType,

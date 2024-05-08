@@ -20,10 +20,10 @@
                     {{worker.id_user.name}}
                 </th>
                 <td scope="row" class="px-6 py-4 font-light text-gray-900 whitespace-nowrap">
-                    {{worker.id_user.email}}
+                    {{worker.id_user.username}}
                 </td>
                 <td scope="row" class="px-6 py-4 font-light text-gray-900 whitespace-nowrap">
-                    {{worker.rol.name}}
+                    {{worker.rol.nombreRol}}
                 </td>
                 <td scope="col" class="flex px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                     <button (click)="openUpdateModal(worker)"><img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/edit.svg"/></button>
@@ -47,7 +47,7 @@
             </select>
             <p>Rol</p>
             <select [(ngModel)]="selectedRol" class="border rounded-lg p-2">
-                <option class="py-4" *ngFor="let rol of roles()" [ngValue]="rol">{{ rol.name }}</option>
+                <option class="py-4" *ngFor="let rol of roles()" [ngValue]="rol">{{ rol.nombreRol }}</option>
             </select>
             
             <app-button (click)="createWorkers()" colorClass="bg-darkBlue text-white p-2" name="Guardar Trabajador"></app-button>
@@ -63,12 +63,10 @@
         <div class="flex flex-col gap-3">
             <h2 class="font-semibold text-4xl text-darkBlue">Actualizar Trabajador</h2>
             <p>Trabajador</p>
-            <select [(ngModel)]="selectedWorker" class="border rounded-lg p-2">
-                <option class="py-4" *ngFor="let worker of workers()" [ngValue]="worker">{{ worker.id_user.name }}</option>
-            </select>
+            <input type="text" class="border rounded-lg p-2" [(ngModel)]="selectedWorker.id_user.name" required>
             <p>Rol</p>
-            <select [(ngModel)]="selectedRol" class="border rounded-lg p-2">
-                <option class="py-4" *ngFor="let rol of roles()" [ngValue]="rol">{{ rol.name }}</option>
+            <select [(ngModel)]="selectedRol" name="selectedRol" class="border rounded-lg p-2">
+                <option class="py-4" *ngFor="let rol of roles()" [ngValue]="rol">{{ rol.nombreRol }}</option>
             </select>
             <app-button (click)="updateWorkers()" colorClass="bg-darkBlue text-white p-2" name="Actualizar Producto"></app-button>
         </div>

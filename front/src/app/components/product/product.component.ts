@@ -11,5 +11,13 @@ import { Product } from '../../../models/product';
 })
 export class ProductComponent {
   @Input() product!: Product
-
+  isOpenModal = false
+  selectedProduct?: Product;
+  openModal(product: Product):void{
+    this.selectedProduct = product;
+    this.isOpenModal = true
+  }
+  closeModal(){
+    this.isOpenModal = !this.isOpenModal
+  }
 }

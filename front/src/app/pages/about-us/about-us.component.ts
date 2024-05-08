@@ -11,11 +11,11 @@ import { About } from '../../../models/about';
 export class AboutUsComponent {
 selectAbout?: About;
 isModalOpen= false;
+imageUrl= 'https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/Nosotros.png?t=2024-05-08T02%3A16%3A02.936Z'
 
 openModal(aboutInfo: About):void{
 this.selectAbout= aboutInfo;
 this.isModalOpen=true;
-
 }
 closeModal(): void {
   this.isModalOpen = false;
