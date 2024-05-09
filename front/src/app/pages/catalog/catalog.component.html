@@ -1,6 +1,40 @@
 <section class="w-full flex bg-darkBlue flex-col items-center justify-center gap-4">
   <h2 class="text-white text-6xl">Productos</h2>
   <div class="container px-2 py-6 mb-3 grid grid-cols-4 gap-3">
-      <app-product *ngFor="let product of products()" [product]="product"></app-product>
+    <div *ngFor="let product of products" class="w-[282px] h-auto rounded-3xl shadow-lg overflow-hidden">
+      <div class="flex items-center bg-gray-200 justify-center h-[312px]">
+        <img [src]="'assets/' + product.imagen" [alt]="product.nombre" loading="lazy" class="max-w-full max-h-full object-contain">
+      </div>
+      <div class="flex flex-col justify-between p-4 text-sm bg-slate-50 text-[#61677A] gap-4">
+        <div class="flex flex-col gap-2">
+          <p class="overflow-hidden">{{ product.nombre }}</p>
+          <p>S/. {{ product.monto }}</p>
+        </div>
+        <div class="flex flex-col gap-2">
+          <app-button (click)="openModal(product)" name="Ver detalle" colorClass="bg-[#F44E77] h-9 p-0 text-xs rounded-lg"></app-button>
+          <a href="https://wa.me/921323007?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20producto%3A%20{{product.nombre}}" class="bg-[#7300D8] h-9 text-xs text-center p-2 w-full rounded text-white">Contactar por Whatsapp</a>
+          </div>
+      </div>
+    </div>
   </div>
 </section>
+
+<div *ngIf="isOpenModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+  <div class="bg-white rounded-3xl shadow-lg p-5 w-[850px] relative">
+    <button (click)="closeModal()" class="absolute top-3 right-3">
+      <img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/close-icon.svg" alt="Cerrar" class="h-6 w-6">
+    </button>
+    <div class="max-w-4xl mx-auto grid sm:grid-cols-1 lg:grid-cols-2 gap-x-20">
+      <div class="flex flex-col justify-between py-3 lg:order-1">
+        <h2 class="font-semibold text-2xl text-slate-900">{{ selectedProduct?.nombre }}</h2>
+        <p class="text-sm font-medium text-slate-500">Categoría: {{ selectedProduct?.id_categoria }}</p>
+        <p class="text-sm font-medium text-slate-500">Marca: {{ selectedProduct?.id_marca }}</p>
+        <p class="text-sm font-medium text-slate-500">Monto: S/. {{ selectedProduct?.monto }}</p>
+        <p class="text-sm text-slate-400">Descripción: <br>{{ selectedProduct?.descripcion }}</p>
+      </div>
+      <div class="flex justify-center lg:order-2">
+        <img [src]="'assets/' + selectedProduct?.imagen" alt="{{ selectedProduct?.nombre }}" class="h-60 w-auto object-cover rounded-lg">
+      </div>
+    </div>
+  </div>
+</div>
