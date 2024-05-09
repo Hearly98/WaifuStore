@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BrandService {
   constructor(private http:HttpClient) { }
-  url='http://localhost:8080/api/brands'
+  url='http://localhost:8080/api/auth/brands'
   
   //Metodos Crud
   getBrands():Observable<Brand[]>{

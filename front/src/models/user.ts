@@ -2,9 +2,9 @@ import { Document } from "./document";
 export interface User {
     id: number,
     name: string,
-    email: string,
+    username: string,
     password: string,
-    birdthdate: string,
-    document: Document,
-
+    birthdate: string,
+    documentType: Document,
+    document: string,
 }

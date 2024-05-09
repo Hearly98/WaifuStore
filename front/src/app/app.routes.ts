@@ -13,6 +13,7 @@ import { ProductsComponent } from './workers/components/products/products.compon
 import { WorkersComponent } from './workers/admin/components/workers/workers.component';
 import { SupervisorComponent } from './workers/supervisor/supervisor.component';
 import { UsersComponent } from './workers/admin/components/users/users.component';
+import { CatalogComponent } from './pages/catalog/catalog.component';
 export const routes: Routes = [
     {path:'', redirectTo:'/inicio', pathMatch:'full'},
     {
@@ -30,6 +31,10 @@ export const routes: Routes = [
             {
                 path:'nosotros',
                 component:AboutUsComponent,
+            },
+            {
+                path:'catalogo',
+                component:CatalogComponent,
             },
         ]
     },

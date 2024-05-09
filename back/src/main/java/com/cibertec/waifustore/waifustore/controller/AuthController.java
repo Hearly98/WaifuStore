@@ -31,4 +31,3 @@ public class AuthController {
         return ResponseEntity.ok(authService.register(request));
     }
 }
-

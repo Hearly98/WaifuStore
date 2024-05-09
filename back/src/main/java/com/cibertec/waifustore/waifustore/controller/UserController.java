@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/auth/users")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -34,6 +34,11 @@ public class UserController {
     public ResponseEntity<Void> deleteUser(@PathVariable("id") int id){
         userService.deleteUserById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+    @GetMapping("/withoutRolWorker")
+    public ResponseEntity<List<User>>getUsersWithoutRolWorker(){
+        List<User> users= userService.getUsersWithoutRolWorker();
+        return ResponseEntity.ok(users);
     }
 }
 

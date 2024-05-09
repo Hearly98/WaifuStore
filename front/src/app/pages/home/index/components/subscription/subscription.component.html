@@ -1,12 +1,12 @@
 <section class="w-[1024px] h-[517px] py-24 text-center ">
-    <div class="container py-16 px-44 text-[#61677A] bg-lightBlue grid gap-10 rounded-[48px]">
+    <form (submit)="sendEmail($event)"  class="container py-16 px-44 text-[#61677A] bg-lightBlue grid gap-10 rounded-[48px]">
             <div class="grid gap-3">
                 <h2 class="text-5xl font-bold">Comienza tu Colección</h2>
                 <p class="text-2xl">Ofertas y promociones exclusivas</p>
             </div>
             <div class="flex place-content-baseline">
-                <input type="text" class="h-[53px] p-4 rounded-s w-full border">
-                <app-button name="Suscríbete ahora" colorClass="bg-coral " additionalClass="rounded-e w-[315px] h-[53px] text-white"/>
+                <input type="email" id="email" class="h-[53px] p-4 rounded-s w-full border">
+                <app-button type="submit" name="Suscríbete ahora" colorClass="bg-coral " additionalClass="rounded-e w-[315px] h-[53px] text-white"/>
             </div>
-    </div>
+        </form>
 </section>

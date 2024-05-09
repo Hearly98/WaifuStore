@@ -15,7 +15,7 @@ public class Document {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "tipo_documento")
-    private String document_type;
+    @Column(name = "nombre")
+    private String name;
 
 }

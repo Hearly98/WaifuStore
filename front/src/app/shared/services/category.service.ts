@@ -8,7 +8,7 @@ import { BehaviorSubject, Observable, catchError, tap } from 'rxjs';
 })
 export class CategoryService {
   constructor(private http:HttpClient) { }
-  url='http://localhost:8080/api/category'
+  url='http://localhost:8080/api/auth/category'
   getCategories(): Observable<Category[]>{
     return this.http.get<Category[]>(`${this.url}/all`)
   }

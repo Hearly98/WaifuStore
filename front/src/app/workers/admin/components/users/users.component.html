@@ -1,1 +1,89 @@
-<p>users works!</p>
+<section class="container px-14 py-6">
+    <h1 class="font-semibold text-4xl text-darkBlue">Usuarios</h1>
+    <div class="flex justify-between py-6">
+       <button (click)="openModal()" class="bg-gray-300 p-2 font-medium rounded-lg">Crear Nuevo</button>
+    </div>
+<div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+            <tr>
+                <th scope="col" class="px-6 py-3" *ngFor="let title of titles">
+                    {{ title.name }}
+                </th>
+                <th scope="col" class="px-6 py-3 text-center">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="border-b" *ngFor="let user of users()">
+                <th scope="row" class="col-span-4 px-6 py-4 font-light text-gray-900 whitespace-nowrap">
+                    {{user.name}}
+                </th>
+                <td scope="row" class="px-6 py-4 font-light text-gray-900 whitespace-nowrap">
+                    {{user.username}}
+                </td>
+                <td scope="row" class="px-6 py-4 font-light text-gray-900 whitespace-nowrap">
+                    {{user.documentType.name}}
+                </td>
+                <td scope="row" class="px-6 py-4 font-light text-gray-900 whitespace-nowrap">
+                    {{user.birthdate}}
+                </td>
+                <td scope="col" class="flex px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                    <button (click)="openUpdateModal(user)"><img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/edit.svg"/></button>
+                    <button (click)="deleteUser(user.id)"><img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/trash.svg"/></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</section>
+
+<div *ngIf="isOpenModal" class="fixed inset-0 flex justify-center items-center bg-gray-500 bg-opacity-50">
+    <div class="bg-white rounded-lg border w-1/2 p-6">
+        <button (click)="closeModal()" class="absolute top-3 right-3">
+            <img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/close-icon.svg" alt="close" loading="lazy">
+        </button>
+        <div class="flex flex-col gap-3">
+            <h2 class="font-semibold text-4xl text-darkBlue">Crear Usuario</h2>
+            <p>Nombre del Usuario</p>
+            <input type="text" class="border rounded-lg p-2" [(ngModel)]="newNameUser" required>
+            <p>Email</p>
+            <input type="text" class="border rounded-lg p-2" [(ngModel)]="newUsernameUser" required>
+            <p>Contraseña</p>
+            <input type="password" class="border rounded-lg p-2" [(ngModel)]="newPasswordUser" required>
+            <p>Fecha de Nacimiento</p>
+            <input type="date" class="border rounded-lg p-2" [(ngModel)]="newBirthdateUser" required>
+            <p>Tipo Documento</p>
+            <select [(ngModel)]="selectedDocumentType" name="selectedDocumentType" class="border rounded-lg p-2">
+                <option *ngFor="let document of documents()" [ngValue]="document">{{ document.name }}</option>
+              </select>
+            <p>Documento</p>
+            <input type="text" class="border rounded-lg p-2" [(ngModel)]="newDocumentUser" required>
+
+            <app-button (click)="createUser()" colorClass="bg-darkBlue text-white p-2" name="Guardar Usuario"></app-button>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isOpenUpdateModal" class="fixed inset-0 flex justify-center items-center bg-gray-500 bg-opacity-50">
+    <div class="bg-white rounded-lg border w-1/2 p-6">
+        <button (click)="closeUpdateModal()" class="absolute top-3 right-3">
+            <img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/close-icon.svg" alt="close" loading="lazy">
+        </button>
+        <div class="flex flex-col gap-3">
+            <h2 class="font-semibold text-4xl text-darkBlue">Actualizar Trabajador</h2>
+            <p>Nombre del Usuario</p>
+            <input type="text" class="border rounded-lg p-2" id="updateNameUser" name="updateNameUser" [(ngModel)]="updateNameUser" required>
+            <p>Email</p>
+            <input type="text" class="border rounded-lg p-2" id="updateUsernameUser" name="updateUsernameUser" [(ngModel)]="updateUsernameUser" required>
+            <p>Contraseña</p>
+            <input type="password" class="border rounded-lg p-2" id="updatePasswordUser" name="updatePasswordUser" [(ngModel)]="updatePasswordUser" required>
+            <p>Fecha de Nacimiento</p>
+            <input type="date" class="border rounded-lg p-2" id="updateBirthdateUser" name="updateBirthdateUser" [(ngModel)]="updateBirthdateUser" required>
+            <p>Tipo Documento</p>
+            <select [(ngModel)]="selectedDocumentType" name="selectedDocumentType" class="border rounded-lg p-2">
+                <option *ngFor="let document of documents()" [value]="document.id">{{ document.name }}</option>
+              </select>
+            <app-button (click)="updateUser()" colorClass="bg-darkBlue text-white p-2" name="Actualizar Usuario"></app-button>
+        </div>
+    </div>
+</div>

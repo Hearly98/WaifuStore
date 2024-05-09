@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/brands")
+@RequestMapping("/auth/brands")
 public class BrandController {
 
     @Autowired

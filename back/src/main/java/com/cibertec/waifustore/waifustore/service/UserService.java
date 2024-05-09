@@ -11,4 +11,5 @@ public interface UserService {
     Optional<User> getUserById(int id) ;
     User save(User user);
     void deleteUserById(int id);
+    List<User> getUsersWithoutRolWorker();
 }

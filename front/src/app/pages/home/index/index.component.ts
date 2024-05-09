@@ -15,5 +15,6 @@ import { NavbarComponent } from '../../../components/navbar/navbar.component';
   templateUrl: './index.component.html'
 })
 export class IndexComponent {
+  imageUrl = 'https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/gallery.png';
   contentCompromiso = 'Entregando alegría a través de figuras de anime que, ButtonComponent capturan la esencia de tus personajes favoritos.';
 }

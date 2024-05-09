@@ -5,7 +5,6 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.util.Collection;
 import java.util.Date;
 
@@ -21,7 +20,7 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "nombre", length = 200)
+    @Column(name = "name", length = 200)
     private String name;
     @Column(name = "username", length = 100, nullable = false)
     private String username;
@@ -31,10 +30,11 @@ public class User implements UserDetails {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date birthdate;
+    @Column(name = "document")
+    private String document;
     @ManyToOne
     @JoinColumn(name= "id_documento", referencedColumnName = "id")
-    private Document document;
-
+    private Document documentType;
 
     public Integer getId() {
         return id;

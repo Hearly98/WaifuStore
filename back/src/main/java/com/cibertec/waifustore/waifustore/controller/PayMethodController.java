@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/payMethod")
+@RequestMapping("/auth/payMethod")
 public class PayMethodController {
     @Autowired
     private PayMethodService payMethodService;

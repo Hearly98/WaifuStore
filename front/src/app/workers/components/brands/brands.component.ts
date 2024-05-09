@@ -74,7 +74,6 @@ this.brandService.delete(id)
 .subscribe(
   response =>{
     this.fetchBrands();
-    this.closeModal();
   },
   error => {
     this.errorMessage="Error al eliminar una Marca."

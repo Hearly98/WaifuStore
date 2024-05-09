@@ -6,6 +6,7 @@ import com.cibertec.waifustore.waifustore.service.UserService;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -18,6 +19,9 @@ public class UserServiceImpl implements UserService  {
     public UserServiceImpl(UserRepository userRepository, EntityManager entityManager) {
         this.entityManager = entityManager;
     }
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public List<User> getAll(){
@@ -46,4 +50,9 @@ public class UserServiceImpl implements UserService  {
             entityManager.remove(user);
         }
     }
+        @Override
+        public List<User> getUsersWithoutRolWorker(){
+            return userRepository.findUserWithoutRolWorker();
+        }
 }
+

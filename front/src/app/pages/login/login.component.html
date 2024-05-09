@@ -1,13 +1,18 @@
 <section class="bg-[#121139] min-h-screen flex items-center justify-center">
-<div class="bg-[#464E63] rounded-3xl w-[480px] h-[502px] flex flex-col gap-4 text-center px-8 pt-8 pb-14">
-    <div class="grid place-items-center gap-2">
-        <img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/login-icon.svg" alt="">
-        <h1 class="text-white text-bold text-3xl">Empecemos</h1>
+    <div class="bg-[#464E63] rounded-3xl w-[480px] h-[502px] flex flex-col gap-4 text-center px-8 pt-8 pb-14">
+        <div class="grid place-items-center gap-2">
+            <img src="https://makbadxzoirjxbltiuwi.supabase.co/storage/v1/object/public/images/login-icon.svg" alt="">
+            <h1 class="text-white text-bold text-3xl">Empecemos</h1>
+        </div>
+        <form (submit)="doLogin()" class="flex flex-col gap-4">
+            <input [(ngModel)]="loginData.username" name="username" class="p-4 h-[53px] rounded" type="email" id="input-username" placeholder="Ingrese su correo electronico" required>
+            <input [(ngModel)]="loginData.password" name="password" class="p-4 h-[53px] rounded" type="password" id="input-password" placeholder="Ingrese su contraseña" required>
+            <button type="submit" class="bg-magenta p-4 text-white rounded">Iniciar Sesión</button>
+        </form>
     </div>
-    <form action="" class="flex flex-col gap-4">
-        <input class="p-4 h-[53px] rounded" type="email" id="input-email" placeholder="Ingrese su correo electronico">
-        <input class="p-4 h-[53px] rounded" type="password" id="input-password" placeholder="Ingrese su contraseña">
-        <app-button routerLink="/administrador" name="Iniciar Sesión" colorClass="bg-magenta p-4"></app-button>
-    </form>
-</div>
 </section>
+
+
+<div *ngIf="message" class="p-4 mb-4 text-sm text-black w-full rounded-lg duration-300" [ngClass]="{'bg-green-400': success, 'bg-red-400': !success}" role="alert">
+{{message}}
+</div>
