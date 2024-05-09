@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
-@RequestMapping("/worker")
+@RequestMapping("/auth/worker")
 public class WorkerController {
     @Autowired
     private WorkerService workerService;

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/roles")
+@RequestMapping("/auth/roles")
 public class RolesController {
     @Autowired
     RolesRepository rolesRepository;

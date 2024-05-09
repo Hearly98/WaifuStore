@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
-@RequestMapping("/client")
+@RequestMapping("/auth/client")
 public class ClientController {
     @Autowired
     private ClientService clientService;

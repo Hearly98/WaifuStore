@@ -9,7 +9,7 @@ import { Document } from '../../../models/document';
 export class DocumentService {
 
   constructor(private http: HttpClient) { }
-  url = 'http://localhost:8080/api/documents'
+  url = 'http://localhost:8080/api/auth/documents'
 
   getAll(): Observable<Document[]>{
     return this.http.get<Document[]>(`${this.url}/all`)

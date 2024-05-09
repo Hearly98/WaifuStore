@@ -8,7 +8,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.*;
 @RestController
-@RequestMapping("/email")
+@RequestMapping("/auth/email")
 public class EmailController {
     @Autowired
     private JavaMailSender mailSender;

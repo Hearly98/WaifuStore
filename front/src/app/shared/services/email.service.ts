@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class EmailService {
-  private apiUrl = "http://localhost:8080/api/email/subscribe"
+  private apiUrl = "http://localhost:8080/api/auth/email/subscribe"
   constructor(private http: HttpClient) { }
   sendEmail(emailForm:any):Observable<any>{
     return this.http.post(this.apiUrl, emailForm)

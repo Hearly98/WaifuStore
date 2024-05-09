@@ -9,7 +9,7 @@ import { Roles } from '../../../models/roles';
 export class RolService {
 
   constructor(private http:HttpClient ) {}
-  url = 'http://localhost:8080/api/roles'
+  url = 'http://localhost:8080/api/auth/roles'
 
   getAll(): Observable<Roles[]>{
     return this.http.get<Roles[]>(`${this.url}/all`)

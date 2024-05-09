@@ -8,7 +8,7 @@ import { Worker } from '../../../models/worker';
 })
 export class WorkerService {
 
-  url = 'http://localhost:8080/api/worker'
+  url = 'http://localhost:8080/api/auth/worker'
   constructor(private http: HttpClient) { }
   getAll(): Observable<Worker[]>{
     return this.http.get<Worker[]>(`${this.url}/all`)

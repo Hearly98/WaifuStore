@@ -7,7 +7,7 @@ import { User } from '../../../models/user';
   providedIn: 'root'
 })
 export class UserService {
-  url = 'http://localhost:8080/api/users' 
+  url = 'http://localhost:8080/api/auth/users' 
   constructor(private http: HttpClient) { }
 
   getAll():Observable<User[]>{

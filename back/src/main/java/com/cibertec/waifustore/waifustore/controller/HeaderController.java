@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 @RestController
-@RequestMapping("/header")
+@RequestMapping("/auth/header")
 public class HeaderController {
     @Autowired
     private HeaderService headerService;
