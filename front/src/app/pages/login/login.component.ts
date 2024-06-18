@@ -31,7 +31,7 @@ formSubmit(){
 }
 doLogin() {
   if (this.loginData.username && this.loginData.password) {
-    this.message = "Procesando...";
+    this.message = "Error...";
     this.authService.login(this.loginData).subscribe({
       next: (response) => {
         console.log(response); 
