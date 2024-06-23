@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductService {
   constructor(private http:HttpClient) { }
-  url='http://localhost:8080/api/products'
+  url='http://localhost:8080/api/auth/products'
   getProducts():Observable<Product[]>{
     return this.http.get<Product[]>(`${this.url}/all`)
   }
