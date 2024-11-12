@@ -1,0 +1,21 @@
+<section class="w-full px-14 py-6">
+    <h1 class="font-semibold text-4xl text-darkBlue">Ventas</h1>
+    <div class="flex justify-between py-6">
+       <button (click)="openModal()" class="bg-gray-300 p-2 font-medium rounded-lg">Crear Nueva venta</button>
+    </div>
+<div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+            <tr>
+                <th scope="col" class="px-6 py-3" *ngFor="let title of titles">
+                    {{ title.name }}
+                </th>
+                <th scope="col" class="px-6 py-3">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+        </tbody>
+    </table>
+</div>
+</section>

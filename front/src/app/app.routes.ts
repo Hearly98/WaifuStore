@@ -14,6 +14,7 @@ import { WorkersComponent } from './workers/admin/components/workers/workers.com
 import { SupervisorComponent } from './workers/supervisor/supervisor.component';
 import { UsersComponent } from './workers/admin/components/users/users.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
+import { SalesComponent } from './workers/admin/components/sales/sales.component';
 export const routes: Routes = [
     {path:'', redirectTo:'/inicio', pathMatch:'full'},
     {
@@ -50,10 +51,15 @@ export const routes: Routes = [
         path:'administrador',
         component:AdminComponent,
         children:[
+            
             {
                 path:'Dashboard',
                 component:DashboardComponent
             }, 
+            {
+                path:'Ventas',
+                component:SalesComponent
+            },
             {
                 path:'Marcas',
                 component:BrandsComponent
